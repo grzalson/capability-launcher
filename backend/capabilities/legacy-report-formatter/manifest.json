@@ -1,0 +1,12 @@
+{
+  "id": "legacy-report-formatter", "name": "Legacy Report Formatter",
+  "description": "Format a service inventory with the team's original reporting dependency. Runs tabulate 0.8.9 in its own Python environment.",
+  "author": "Internal Tools", "version": "1.0.0", "category": "Data & reporting",
+  "timeout_seconds": 15, "python_dependencies": ["tabulate==0.8.9"], "output_type": "markdown",
+  "input_schema": {"type": "object", "additionalProperties": false, "required": ["title", "rows"], "properties": {
+    "title": {"type": "string", "title": "Report title", "minLength": 1, "maxLength": 120, "default": "Service inventory"},
+    "rows": {"type": "array", "title": "Inventory rows", "description": "JSON array of service and owner objects.", "maxItems": 1000,
+      "items": {"type": "object", "required": ["service", "owner"], "properties": {"service": {"type": "string"}, "owner": {"type": "string"}}, "additionalProperties": false},
+      "default": [{"service": "Gateway", "owner": "Platform"}, {"service": "Billing", "owner": "Finance"}, {"service": "Search", "owner": "Discovery"}]}
+  }}
+}

@@ -1,0 +1,15 @@
+services:
+  launcher:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    init: true
+    stop_grace_period: 15s
+    volumes:
+      - run-data:/app/backend/data
+      - environment-cache:/app/backend/.venvs
+      - capability-registry:/app/backend/capabilities
+volumes:
+  run-data:
+  environment-cache:
+  capability-registry:

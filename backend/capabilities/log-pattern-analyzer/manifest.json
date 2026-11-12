@@ -1,0 +1,26 @@
+{
+  "id": "log-pattern-analyzer",
+  "name": "Log Pattern Analyzer",
+  "description": "Turn noisy server logs into a clear incident picture. Find error bursts, slow requests, and exposed personal data in one pass.",
+  "author": "Platform Engineering",
+  "version": "1.2.0",
+  "category": "Observability",
+  "timeout_seconds": 15,
+  "python_dependencies": [],
+  "ui_component": "LogAnalyzerView",
+  "output_type": "custom",
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["logs", "latency_threshold_ms", "redact_pii"],
+    "properties": {
+      "logs": {
+        "type": "string", "title": "Server logs", "format": "textarea", "minLength": 1, "maxLength": 200000,
+        "description": "Paste logs with status= and latency= fields, or start with the sample below.",
+        "default": "2026-11-12T09:41:01Z GET /api/health status=200 latency=12ms\n2026-11-12T09:41:08Z GET /api/projects status=200 latency=86ms\n2026-11-12T09:41:18Z POST /api/login status=200 latency=124ms user=alex@example.com\n2026-11-12T09:42:02Z GET /api/projects status=200 latency=94ms\n2026-11-12T09:42:19Z POST /api/export status=502 latency=1250ms\n2026-11-12T09:42:28Z POST /api/export status=500 latency=1840ms\n2026-11-12T09:42:45Z GET /api/users status=200 latency=540ms user=sam@example.com\n2026-11-12T09:43:04Z GET /api/projects status=200 latency=82ms\n2026-11-12T09:43:22Z POST /api/export status=503 latency=2110ms\n2026-11-12T09:43:37Z GET /api/health status=200 latency=18ms\n2026-11-12T09:44:02Z GET /api/users status=404 latency=43ms\n2026-11-12T09:44:14Z GET /api/projects status=200 latency=79ms\n2026-11-12T09:44:25Z POST /api/export status=200 latency=432ms\n2026-11-12T09:45:01Z GET /api/health status=200 latency=14ms"
+      },
+      "latency_threshold_ms": {"type": "integer", "title": "Latency threshold", "description": "Requests above this value are flagged as slow (milliseconds).", "minimum": 1, "maximum": 60000, "default": 500},
+      "redact_pii": {"type": "boolean", "title": "Redact personal data", "description": "Mask email addresses in the analysis output.", "default": true}
+    }
+  }
+}

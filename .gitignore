@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.venvs/
+node_modules/
+dist/
+*.tsbuildinfo
+backend/data/
+.env
+tmp/
+test-results/
+playwright-report/
+.DS_Store
+**/.impeccable/config.local.json
+**/.impeccable/live/app-root.json
+**/.impeccable/live/roots.json

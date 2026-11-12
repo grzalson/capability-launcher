@@ -1,0 +1,10 @@
+{
+  "id": "modern-data-profiler", "name": "Modern Data Profiler",
+  "description": "Profile numeric fields, spot missing values, and summarize a dataset. Uses tabulate 0.9.0 alongside the legacy formatter.",
+  "author": "Data Engineering", "version": "2.1.0", "category": "Data & reporting",
+  "timeout_seconds": 15, "python_dependencies": ["tabulate==0.9.0"], "output_type": "table",
+  "input_schema": {"type": "object", "additionalProperties": false, "required": ["records"], "properties": {
+    "records": {"type": "array", "title": "Dataset", "description": "Paste a JSON array of records. Numeric columns are summarized automatically.", "maxItems": 10000,
+      "items": {"type": "object"}, "default": [{"latency": 120, "requests": 204}, {"latency": 340, "requests": 188}, {"latency": 85, "requests": null}, {"latency": 210, "requests": 310}]}
+  }}
+}

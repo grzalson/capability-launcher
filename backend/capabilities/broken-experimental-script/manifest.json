@@ -1,0 +1,9 @@
+{
+  "id": "broken-experimental-script", "name": "Failure Isolation Lab",
+  "description": "Deliberately crash, time out, emit invalid output, or break a custom widget. Verify that the rest of the launcher stays healthy.",
+  "author": "Developer Experience", "version": "0.1.0", "category": "Sandbox",
+  "timeout_seconds": 2, "python_dependencies": [], "ui_component": "FaultDemoView", "output_type": "custom",
+  "input_schema": {"type": "object", "additionalProperties": false, "required": ["mode"], "properties": {
+    "mode": {"type": "string", "title": "Experiment", "enum": ["success", "crash", "timeout", "syntax_error", "missing_dependency", "invalid_json", "noisy", "ui_crash"], "default": "success", "description": "Each failure stays inside this capability's execution or widget."}
+  }}
+}
